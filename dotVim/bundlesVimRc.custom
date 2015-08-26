@@ -1,1 +1,71 @@
 " Add custom bundles here using the `NeoBundle` command.
+
+" ====================== ag.vim for search like ack ============================
+NeoBundle "git@github.com:rking/ag.vim.git"
+" ==============================================================================
+
+" ====================== easymotion ============================
+NeoBundle "git@github.com:easymotion/vim-easymotion.git"
+" ==============================================================================
+
+" ====================== vim-expand-region for easier visual expansion ============================
+NeoBundle "terryma/vim-expand-region"
+" ==============================================================================
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+NeoBundle 'junegunn/vim-easy-align'
+vmap <Enter> <Plug>(EasyAlign)
+
+NeoBundle 'git@github.com:heavenshell/vim-jsdoc.git'
+
+
+NeoBundle 'marijnh/tern_for_vim'
+
+
+NeoBundleLazy 'facebook/vim-flow', {
+      \ 'autoload': {
+      \     'filetypes': 'javascript'
+      \ }}
+
+let g:flow#enable = 0
+
+NeoBundle 'elzr/vim-json'
+au BufRead,BufNewFile *.json set filetype=json
+let g:syntastic_json_checkers=['jsonlint']
+
+NeoBundle 'tpope/vim-commentary'
+
+NeoBundle 'justinj/vim-react-snippets'
+
+NeoBundle 'majutsushi/tagbar'
+
+NeoBundle 'sjbach/lusty'
+
+NeoBundle 'vim-scripts/YankRing.vim'
+
+"NeoBundle 'sjl/gundo.vim'
+
+NeoBundle 'airblade/vim-gitgutter'
+
+NeoBundle 'ntpeters/vim-better-whitespace'
+
+NeoBundle 'sickill/vim-pasta'
+
+NeoBundle 'vim-scripts/matchit.zip'
+
+"NeoBundle 'Olical/vim-enmasse'
+
+NeoBundle 'gabesoft/vim-ags'
+
+NeoBundle 'nathanaelkane/vim-indent-guides'
+
+NeoBundle 'vim-scripts/HTML-AutoCloseTag'
+
+NeoBundle 'jeetsukumaran/vim-buffergator'
+
+NeoBundle 'leafgarland/typescript-vim'
+
+NeoBundle 'Quramy/tsuquyomi'
+
+NeoBundle 'clausreinke/typescript-tools.vim'
