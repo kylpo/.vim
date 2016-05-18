@@ -1,27 +1,52 @@
 " Overwrite this file with whatever you want. This will be executed after
 " loading any of the stock bundles/settings.
 
+set regexpengine=1
+syntax enable
+
+"
+" set background=light
+" colorscheme solarizedLight
+
 let mapleader = "\<Space>"
 let maplocalleader = ","
 
+let g:flow#enable = 0
+" let g:flow#autoclose = 1
 let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_checkers = ['flow', 'eslint']
+
+
+" https://github.com/scrooloose/syntastic/issues/1649
+"let g:syntastic_syntastic_javascript_flow_exe = 'flow check'
+
+" let g:syntastic_javascript_checkers = ['flow', 'eslint']
+
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap <Leader>w :w<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <D-b> :CtrlPBuffer<CR>
 
+map <silent> <Leader>w <Plug>CamelCaseMotion_e
+map <silent> <leader>b <Plug>CamelCaseMotion_b
 
 set hidden
 set cursorline
+set colorcolumn=121
+" set relativenumber
+"
 
+nmap s <Plug>(easymotion-s)
+vmap s <Plug>(easymotion-s)
 
+nmap S <Plug>(easymotion-bd-w)
+vmap S <Plug>(easymotion-bd-w)
 
-nmap <Leader>s <Plug>(easymotion-s)
 nmap <Leader>a <Plug>(EasyAlign)
 nnoremap <Leader>/ :LustyBufferGrep<CR>
+
+" open file under cursor
+nmap <leader>f :CtrlP<CR><C-\>w
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -33,7 +58,7 @@ if executable('ag')
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
   " ag is fast enough that CtrlP doesn't need to cache
-"  let g:ctrlp_use_caching = 0
+ let g:ctrlp_use_caching = 0
 endif
 
 
@@ -62,8 +87,8 @@ endfunction
 
 
 
-
-
+" open file in vertical split
+nnoremap gvf :vertical wincmd f<CR>
 
 
 "EASYMOTION
@@ -115,3 +140,8 @@ else
           \ }
 
 endif
+
+
+
+
+" let NERDTreeHijackNetrw=1

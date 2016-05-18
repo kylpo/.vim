@@ -1,17 +1,40 @@
-" Close vim if the only window left
+"  Close vim if the only window left
 " open is a NERDTree?
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+"
+" " nice arrow
+" let g:NERDTreeDirArrows = 1
+" " not so much cruft
+" let g:NERDTreeMinimalUI = 1
+" let g:NERDTreeShowBookmarks = 1
+" hi def link NERDTreeRO Normal
+" hi def link NERDTreePart StatusLine
+" hi def link NERDTreeDirSlash Directory
+" hi def link NERDTreeCurrentNode Search
+" hi def link NERDTreeCWD Normal
+"
+" " Not so much color
+" let g:NERDChristmasTree = 0
 
-" nice arrow
-let g:NERDTreeDirArrows = 1
-" not so much cruft
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeShowBookmarks = 1
-hi def link NERDTreeRO Normal
-hi def link NERDTreePart StatusLine
-hi def link NERDTreeDirSlash Directory
-hi def link NERDTreeCurrentNode Search
-hi def link NERDTreeCWD Normal
+" Ignore turds left behind by Mercurial.
+let g:NERDTreeIgnore=['\.orig']
 
-" Not so much color
-let g:NERDChristmasTree = 0
+" The default of 31 is just a little too narrow.
+let g:NERDTreeWinSize=40
+
+" Disable display of '?' text and 'Bookmarks' label.
+let g:NERDTreeMinimalUI=1
+
+" Let <Leader><Leader> (^#) return from NERDTree window.
+let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+
+" Single-click to toggle directory nodes, double-click to open non-directory
+" nodes.
+let g:NERDTreeMouseMode=2
+
+if has('autocmd')
+  augroup WincentNERDTree
+    autocmd!
+    autocmd User NERDTreeInit call autocmds#attempt_select_last_file()
+  augroup END
+endif

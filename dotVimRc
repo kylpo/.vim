@@ -163,7 +163,7 @@ NeoBundleCheck
 
 " <temporary until neobundle stops asking to hit enter for more>
 set linespace=0
-autocmd VimEnter * exec ":set columns=85"
+" autocmd VimEnter * exec ":set columns=85"
 " </temporary until neobundle stops asking to hit enter for more>
 
 
@@ -176,3 +176,13 @@ set listchars = "eol:$"
 if filereadable(expand("~/.vim/vimrc.custom.after"))
   source ~/.vim/vimrc.custom.after
 endif
+
+
+" After this file is sourced, plug-in code will be evaluated.
+" See ~/.vim/after for files evaluated after that.
+" See `:scriptnames` for a list of all scripts, in evaluation order.
+" Launch Vim with `vim --startuptime vim.log` for profiling info.
+"
+" To see all leader mappings, including those from plug-ins:
+"
+"   vim -c 'set t_te=' -c 'set t_ti=' -c 'map <space>' -c q | sort

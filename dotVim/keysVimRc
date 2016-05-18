@@ -11,6 +11,27 @@
 "":cmap  :cnoremap  :cunmap  :cmapclear	     -	       yes	   -
 ":lmap  :lnoremap  :lunmap  :lmapclear	    yes*       yes*	  yes*
 
+
+" Like vim-vinegar.
+nnoremap <silent> - :silent edit <C-R>=empty(expand('%')) ? '.' : expand('%:p:h')<CR><CR>
+
+" Move up a directory using "-" like vim-vinegar (usually "u" does this).
+nmap <buffer> <expr> - g:NERDTreeMapUpdir
+
+if has("gui_running")
+  if has("gui_macvim")
+    map <D-e> :NERDTreeToggle<Cr><c-w><c-w><c-w><c-p>
+    imap <D-e> <Esc>:NERDTreeToggle<Cr><c-w><c-w><c-w><c-p>
+    vmap <D-e> <Esc>:NERDTreeToggle<Cr><c-w><c-w><c-w><c-p>
+    nmap <D-e> <Esc>:NERDTreeToggle<Cr><c-w><c-w><c-w><c-p>
+
+    map <D-E> :NERDTreeFind<Cr><c-w><c-w><c-w><c-p>
+    imap <D-E> <Esc>:NERDTreeFind<Cr><c-w><c-w><c-w><c-p>
+    vmap <D-E> <Esc>:NERDTreeFind<Cr><c-w><c-w><c-w><c-p>
+    nmap <D-E> <Esc>:NERDTreeFind<Cr><c-w><c-w><c-w><c-p>
+  endif
+endif
+
 "totally annoying default mapping for cap k
 nmap K <nop>
 
@@ -60,8 +81,8 @@ imap <S-Enter> <End><Cr>
 nnoremap ; :
 
 " fast scrolling using control when in command mode (keeping the j/k paradigm)
-map <C-j> <C-d>
-map <C-k> <C-u>
+" map <C-j> <C-d>
+" map <C-k> <C-u>
 
 " Make S always delete until the point where you'd want to start typing -
 " with some indent plugins, or settings the desired behavior is lost - this
@@ -71,8 +92,12 @@ nmap S ddO
 " ==== Window and split navigation ===
 "Tab through your splits! (Shift tab won't ever work on terminal :( )
 set winwidth=1
-nmap <Tab> <c-w><c-w>
-nmap <s-Tab> <c-w><s-w>
+" nmap <Tab> <c-w><c-w>
+" nmap <s-Tab> <c-w><s-w>
+map <C-j> <c-w>j
+map <C-k> <c-w>k
+map <C-l> <c-w>l
+map <C-h> <c-w>h
 
 
 imap <c-Tab> <Esc>:tabnext<Cr>

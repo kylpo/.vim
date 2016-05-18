@@ -17,28 +17,33 @@ vmap <C-v> <Plug>(expand_region_shrink)
 NeoBundle 'junegunn/vim-easy-align'
 vmap <Enter> <Plug>(EasyAlign)
 
-NeoBundle 'git@github.com:heavenshell/vim-jsdoc.git'
 
 
-NeoBundle 'marijnh/tern_for_vim'
+NeoBundle 'tacahiroy/ctrlp-funky'
+NeoBundle 'ivalkeen/vim-ctrlp-tjump'
+NeoBundle 'sgur/ctrlp-extensions.vim'
+
+" NeoBundle 'git@github.com:heavenshell/vim-jsdoc.git'
 
 
-NeoBundleLazy 'facebook/vim-flow', {
-      \ 'autoload': {
-      \     'filetypes': 'javascript'
-      \ }}
+" NeoBundle 'marijnh/tern_for_vim'
 
-let g:flow#enable = 0
+
+" NeoBundleLazy 'facebook/vim-flow', {
+"       \ 'autoload': {
+"       \     'filetypes': 'javascript'
+"       \ }}
+
+" let g:flow#enable = 0
 
 NeoBundle 'elzr/vim-json'
 au BufRead,BufNewFile *.json set filetype=json
 let g:syntastic_json_checkers=['jsonlint']
 
 NeoBundle 'tpope/vim-commentary'
-
-NeoBundle 'justinj/vim-react-snippets'
-
-NeoBundle 'majutsushi/tagbar'
+NeoBundle 'tpope/vim-abolish'
+NeoBundle 'tpope/vim-projectionist'
+" NeoBundle 'tpope/vim-vinegar'
 
 NeoBundle 'sjbach/lusty'
 
@@ -62,10 +67,63 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'vim-scripts/HTML-AutoCloseTag'
 
-NeoBundle 'jeetsukumaran/vim-buffergator'
+" NeoBundle 'jeetsukumaran/vim-buffergator'
 
-NeoBundle 'leafgarland/typescript-vim'
+" NeoBundle 'leafgarland/typescript-vim'
 
-NeoBundle 'Quramy/tsuquyomi'
+" NeoBundle 'Quramy/tsuquyomi'
 
-NeoBundle 'clausreinke/typescript-tools.vim'
+" NeoBundle 'clausreinke/typescript-tools.vim'
+
+
+" NeoBundle 'HerringtonDarkholme/yats.vim'
+
+" NeoBundle 'xolox/vim-easytags'
+"
+" NeoBundle 'majutsushi/tagbar'
+
+" NeoBundle 'Shougo/vimshell.vim'
+
+NeoBundle 'othree/yajs.vim'
+
+NeoBundle 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'underscore,react,jquery'
+
+NeoBundle 'wincent/ferret'
+
+NeoBundle 'mtscout6/syntastic-local-eslint.vim'
+
+NeoBundle 'embear/vim-localvimrc'
+let g:localvimrc_ask = 0
+
+NeoBundle 'kshenoy/vim-signature'
+"  mx           Toggle mark 'x' and display it in the leftmost column
+"  dmx          Remove mark 'x' where x is a-zA-Z
+"  m,           Place the next available mark
+"  m-           Delete all marks from the current line
+"  m<Space>     Delete all marks from the current buffer
+
+" NeoBundle 'bling/vim-bufferline'
+
+NeoBundle 'samuelsimoes/vim-jsx-utils'
+
+NeoBundle 'mtth/scratch.vim'
+" :Scratch
+" gs - open scratch window in insert mode. Pastes what is already selected.
+
+" This plugin allows you to select some text using Vim's visual mode, then hit * and # to search for it elsewhere in the file.
+NeoBundle 'bronson/vim-visual-star-search'
+
+NeoBundle 'mbbill/undotree'
+" <Space>u - open undoTree
+
+NeoBundle 'bkad/CamelCaseMotion'
+" call camelcasemotion#CreateMotionMappings('<leader>')
+" map <silent> q <Plug>CamelCaseMotion_w
+" map <silent> Q <Plug>CamelCaseMotion_b
+" sunmap q
+" sunmap Q
+" map <silent> e <Plug>CamelCaseMotion_e
+" map <silent> ge <Plug>CamelCaseMotion_ge
+" sunmap e
+" sunmap ge

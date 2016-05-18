@@ -183,8 +183,8 @@ source ~/.vim/pluginRc/nerdTreeVimRc
 
 
 " ============================= NERDTreeSideBar ================================
-NeoBundle "https://github.com/jistr/vim-nerdtree-tabs"
-source ~/.vim/pluginRc/nerdTreeTabsVimRc
+" NeoBundle "https://github.com/jistr/vim-nerdtree-tabs"
+" source ~/.vim/pluginRc/nerdTreeTabsVimRc
 " ==============================================================================
 
 
@@ -218,13 +218,6 @@ endif
 NeoBundle "https://github.com/def-lkb/ocp-indent-vim"
 " ==============================================================================
 
-" =================================== OCP-indent ================================
-" This is a better version than what comes directly out of OPAM (it does not
-" destroy undo/redo).
-NeoBundle "https://github.com/def-lkb/ocp-indent-vim"
-" ==============================================================================
-
-
 
 " ======================= Toggle quickfix/location ============================
 " See .keysVimRc
@@ -234,9 +227,9 @@ let g:toggle_list_lopen_command="bo copen 30"
 " =============================================================================
 
 " ======================= Easy Grep ===========================================
-NeoBundle "https://github.com/yegappan/grep"
-let Grep_Skip_Files = '*.byte *.depends *.cmi *.cmx *.orig *.back *.cmo *.o *~'
-let Grep_Skip_Dirs = 'RCS CVS SCCS _build .git'
+" NeoBundle "https://github.com/yegappan/grep"
+" let Grep_Skip_Files = '*.byte *.depends *.cmi *.cmx *.orig *.back *.cmo *.o *~'
+" let Grep_Skip_Dirs = 'RCS CVS SCCS _build .git'
 " =============================================================================
 
 " =================== Web Dev Icons ===========================================
@@ -251,6 +244,12 @@ let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
 " ======================= A lighterweight Powerline ============================
 NeoBundle "https://github.com/jordwalke/vim-airline"
 let g:airline_powerline_fonts = 1
+
+let g:airline#extensions#branch#enabled = 0
+"let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline_section_y = ''
+
 set laststatus=2
 " Disable truncation
 let g:airline#extensions#default#section_truncate_width = {}
@@ -261,7 +260,7 @@ let g:airline#extensions#default#section_truncate_width = {}
 NeoBundle "https://github.com/scrooloose/syntastic"
 " TODO: Disable signs in merlin/syntastic, and only use the VimHint strategy of
 " underlining *just* the region of error.
-let g:syntastic_enable_signs=0
+let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_loc_list_height=15
 let g:syntastic_javascript_checkers=['flow']
@@ -381,6 +380,8 @@ NeoBundle "jordwalke/VimCompleteLikeAModernEditor"
 
 " ============================= Commenter ======================================
 NeoBundle "https://github.com/tomtom/tcomment_vim"
+" Uncomment a line; mirrors gcc (which comments/toggles a line).
+nmap guu <Plug>TComment_Uncommentc
 " ==============================================================================
 
 
@@ -388,6 +389,16 @@ NeoBundle "https://github.com/tomtom/tcomment_vim"
 " I suspect this is doing nothing since JavaScript-Indent overwrites the
 " indentation hooks, but I cannot prove it.
 NeoBundle "https://github.com/pangloss/vim-javascript"
+" set cole=1
+" let g:javascript_conceal_function   = "ƒ"
+" let g:javascript_conceal_null       = "ø"
+" let g:javascript_conceal_this       = "@"
+" let g:javascript_conceal_return     = "⇚"
+" let g:javascript_conceal_undefined  = "¿"
+" let g:javascript_conceal_NaN        = "ℕ"
+" let g:javascript_conceal_prototype  = "¶"
+" let g:javascript_conceal_static     = "•"
+" let g:javascript_conceal_super      = "Ω"
 " ==============================================================================
 
 " =============================Javascript-Indent================================
@@ -425,9 +436,9 @@ NeoBundle "git://github.com/vim-scripts/Parameter-Text-Objects.git"
 
 " ============================ GUndo ============================================
 " Visualize a tree of your document history
-NeoBundle "http://github.com/sjl/gundo.vim.git"
-nnoremap <D-U> :GundoToggle<CR>
-let g:gundo_close_on_revert=1
+" NeoBundle "http://github.com/sjl/gundo.vim.git"
+" nnoremap <D-U> :GundoToggle<CR>
+" let g:gundo_close_on_revert=1
 " ==============================================================================
 
 " ========================== Undo Quit of a window =============================
