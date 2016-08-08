@@ -141,7 +141,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
 
-Plug 'dracula/vim'
+" Plug 'dracula/vim'
 
 Plug 'embear/vim-localvimrc'
 let g:localvimrc_ask = 0
@@ -149,33 +149,29 @@ let g:localvimrc_ask = 0
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'underscore,react'
 
+
+" YouCompleteMe with Ultisnip tab support
+" from http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
+Plug 'SirVer/ultisnips'
+if has('gui_win32')
+  let g:UltiSnipsSnippetsDir=$HOME
+  let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
+else
+  let g:UltiSnipsSnippetsDir="~/.vim"
+  let g:UltiSnipsSnippetDirectories=["myUltiSnippets"]
+endif
 
-"
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" Any valid git URL is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Group dependencies, vim-snippets depends on ultisnips
-" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
-" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
-" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
-" Plug '~/my-prototype-plugin'
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Add plugins to &runtimepath
 call plug#end()
