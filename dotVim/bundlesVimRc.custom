@@ -33,6 +33,8 @@ NeoBundle 'sgur/ctrlp-extensions.vim'
 "       \ 'autoload': {
 "       \     'filetypes': 'javascript'
 "       \ }}
+"
+" let g:flow#autoclose = 1
 
 " let g:flow#enable = 0
 
@@ -63,7 +65,7 @@ NeoBundle 'vim-scripts/matchit.zip'
 
 NeoBundle 'gabesoft/vim-ags'
 
-NeoBundle 'nathanaelkane/vim-indent-guides'
+" NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'vim-scripts/HTML-AutoCloseTag'
 
@@ -84,17 +86,19 @@ NeoBundle 'vim-scripts/HTML-AutoCloseTag'
 
 " NeoBundle 'Shougo/vimshell.vim'
 
-NeoBundle 'othree/yajs.vim'
+" NeoBundle 'othree/yajs.vim'
 
-NeoBundle 'othree/javascript-libraries-syntax.vim'
-let g:used_javascript_libs = 'underscore,react,jquery'
+" NeoBundle 'othree/es.next.syntax.vim'
+
+" NeoBundle 'isRuslan/vim-es6'
+
+" NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+
 
 NeoBundle 'wincent/ferret'
 
 NeoBundle 'mtscout6/syntastic-local-eslint.vim'
 
-NeoBundle 'embear/vim-localvimrc'
-let g:localvimrc_ask = 0
 
 NeoBundle 'kshenoy/vim-signature'
 "  mx           Toggle mark 'x' and display it in the leftmost column
@@ -127,3 +131,49 @@ NeoBundle 'bkad/CamelCaseMotion'
 " map <silent> ge <Plug>CamelCaseMotion_ge
 " sunmap e
 " sunmap ge
+
+
+
+call plug#begin('~/.vim/plugged')
+
+" Make sure you use single quotes
+
+
+Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
+
+Plug 'dracula/vim'
+
+Plug 'embear/vim-localvimrc'
+let g:localvimrc_ask = 0
+
+Plug 'othree/javascript-libraries-syntax.vim'
+let g:used_javascript_libs = 'underscore,react'
+
+"
+" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+" Plug 'junegunn/vim-easy-align'
+
+" Any valid git URL is allowed
+" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+
+" Group dependencies, vim-snippets depends on ultisnips
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+" On-demand loading
+" Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+
+" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
+" Plug 'fatih/vim-go', { 'tag': '*' }
+
+" Plugin options
+" Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+
+" Plugin outside ~/.vim/plugged with post-update hook
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" Unmanaged plugin (manually installed and updated)
+" Plug '~/my-prototype-plugin'
+
+" Add plugins to &runtimepath
+call plug#end()
