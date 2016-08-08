@@ -4,7 +4,7 @@
 
 <tr>
 <td>
-<h2>VimBox</h2>
+<h2>VimBox Fork for Kylpo</h2>
 <blockquote>Modern MacVim Configuration</blockquote>
 <img src="dotVim/images/VimBox.png" height="256px" width="256px" />
 </td>
@@ -22,6 +22,12 @@
 </table>
 
 
+## Kylpo notes
+Sync with upstream:
+```
+$ git fetch upstream
+$ git merge upstream/master
+```
 
 <br>
 

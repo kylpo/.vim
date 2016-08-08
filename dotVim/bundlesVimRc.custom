@@ -149,6 +149,8 @@ let g:localvimrc_ask = 0
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'underscore,react'
 
+Plug 'Valloric/YouCompleteMe'
+
 "
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " Plug 'junegunn/vim-easy-align'

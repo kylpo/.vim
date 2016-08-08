@@ -366,8 +366,8 @@ source ~/.vim/pluginRc/ctrlPVimRc
 
 " ============================= ACP Forked =========================
 " Check out snippets in ~/.vim/personalSnippets/
-NeoBundle "https://github.com/jordwalke/AutoComplPop"
-let g:acp_ignorecaseOption = 1
+" NeoBundle "https://github.com/jordwalke/AutoComplPop"
+" let g:acp_ignorecaseOption = 1
 
 " ==============================================================================
 
@@ -386,7 +386,7 @@ endif
 " ==============================================================================
 
 " ======== Combine Previous Plugins For Modern Completion Experience ===========
-NeoBundle "jordwalke/VimCompleteLikeAModernEditor"
+" NeoBundle "jordwalke/VimCompleteLikeAModernEditor"
 " ==============================================================================
 
 " ============================= Commenter ======================================
