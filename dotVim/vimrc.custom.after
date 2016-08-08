@@ -26,6 +26,9 @@ let g:syntastic_javascript_eslint_exec = 'eslint_d'
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <D-b> :CtrlPBuffer<CR>
 
+" This allows you to stand anywhere on the token to replace, press "c>", print new token and then hit "." happily after that to replace next occurrence or "n" to skip unneeded
+nnoremap c> *Ncgn
+
 map <silent> <Leader>w <Plug>CamelCaseMotion_e
 map <silent> <leader>b <Plug>CamelCaseMotion_b
 
