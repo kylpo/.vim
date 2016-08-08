@@ -74,12 +74,17 @@ Installation:
 
 6. Install up-to-date node.js if you want JS linting (http://nodejs.org/)
 
-7. Make your MacVim use the VimBox icon (optional).
-   Find `/Applicatin/MacVim.app`. Select it and press `⌘+i` and an information
-   window about MacVim should open. Drag `images/ApplicationIcon.icns` onto the
-   little icon in that information window. Restart MacVim.
+7. Make your MacVim use the VimBox icon (optional):
 
-
+```lang=bash
+open /Applications/
+# Find the MacVim app icon and press `⌘+i` to open the information window
+open ./dotVim/images
+# drag the ApplicationIcon.icns onto the little icon in the information window
+# and restart MacVim.
+```
+  
+  
 Features:
 ----------
 
@@ -104,7 +109,7 @@ Features:
 | `⌘+shift+p`               | Toggle spell-check                              |
 | `⌘+/`                     | Toggle comments - selected range - or line      |
 | `⌘+shift+m`               | format/indent entire file then restore cursor   |
-| `⌘+l`                     | Toggle error list (only shows if it has errors) |
+| `⌘+shift+r`               | Toggle error list (only shows if it has errors) |
 | `⌘+r`                     | Toggle quickfix list                            |
 
 
@@ -134,7 +139,7 @@ Features:
 - Like Sublime, `VimBox` accepts highlighted entries via `tab` or `enter`.
 - `tab` also triggers a snippet when applicable, and `tab` will allow "tabbing" through the snippet placeholders.
 - Place custom snippets in `~/.vim/myUltiSnippets/`
-- If the completion window is open and you want to insert a newline instead of inserting the completion, press `shift+s` or `control+s`.
+- If the completion window is open and you want to insert a newline instead of inserting the completion, press `shift+enter` or `control+enter`.
 
 
 #####Distraction Free UI Tabs
@@ -298,6 +303,13 @@ In `~/.vim/vimrc.custom.before`/`~/.vim/vimrc.custom.after` you may set any opti
 | `let g:tabSize = 2`      | Set tab width           |
 
 
+Using VimBox's configuration from NeoVim
+---------
+
+    # TODO: Add build script to backup old `.nvim/.nvimrc`
+    ln -s ~/.vimrc ~/.nvimrc
+    ln -s ~/.vim ~/.nvim
+
 License:
 -------
 
@@ -308,8 +320,8 @@ directory containing that licensed work.
 
 Each of the fonts carry their own license, which you should consult.
 
-The VimBox application icon was derived from Jannik Siebert's excellent Sublime
-icon. See the icon's `README` for more information and links to the original
+The VimBox application icon was derived from [Jannik Siebert](https://dribbble.com/janniks)'s excellent [Sublime
+icon](https://dribbble.com/shots/1827862-Yosemite-Sublime-Text-Icon). See the icon's `README` for more information and links to the original
 works as well as the license that applies to that icon.
 
 The SketchApp sources to the icon are also included in the
