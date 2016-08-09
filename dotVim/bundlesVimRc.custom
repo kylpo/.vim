@@ -1,106 +1,35 @@
-" Add custom bundles here using the `NeoBundle` command.
 
-" ====================== ag.vim for search like ack ============================
-NeoBundle "git@github.com:rking/ag.vim.git"
-" ==============================================================================
 
-" ====================== easymotion ============================
-NeoBundle "git@github.com:easymotion/vim-easymotion.git"
-" ==============================================================================
-
-" ====================== vim-expand-region for easier visual expansion ============================
-NeoBundle "terryma/vim-expand-region"
-" ==============================================================================
-vmap v <Plug>(expand_region_expand)
-vmap <C-v> <Plug>(expand_region_shrink)
-
-NeoBundle 'junegunn/vim-easy-align'
-vmap <Enter> <Plug>(EasyAlign)
+" NeoBundle 'sjbach/lusty'
 
 
 
-NeoBundle 'tacahiroy/ctrlp-funky'
-NeoBundle 'ivalkeen/vim-ctrlp-tjump'
-NeoBundle 'sgur/ctrlp-extensions.vim'
-
-" NeoBundle 'git@github.com:heavenshell/vim-jsdoc.git'
 
 
-" NeoBundle 'marijnh/tern_for_vim'
 
 
-" NeoBundleLazy 'facebook/vim-flow', {
-"       \ 'autoload': {
-"       \     'filetypes': 'javascript'
-"       \ }}
-"
-" let g:flow#autoclose = 1
-
-" let g:flow#enable = 0
-
-NeoBundle 'elzr/vim-json'
-au BufRead,BufNewFile *.json set filetype=json
-let g:syntastic_json_checkers=['jsonlint']
-
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-abolish'
-NeoBundle 'tpope/vim-projectionist'
-" NeoBundle 'tpope/vim-vinegar'
-
-NeoBundle 'sjbach/lusty'
-
-NeoBundle 'vim-scripts/YankRing.vim'
-
-"NeoBundle 'sjl/gundo.vim'
-
-NeoBundle 'airblade/vim-gitgutter'
-
-NeoBundle 'ntpeters/vim-better-whitespace'
-
-NeoBundle 'sickill/vim-pasta'
-
-NeoBundle 'vim-scripts/matchit.zip'
 
 "NeoBundle 'Olical/vim-enmasse'
-
-NeoBundle 'gabesoft/vim-ags'
-
+" NeoBundle 'tpope/vim-vinegar'
 " NeoBundle 'nathanaelkane/vim-indent-guides'
-
-NeoBundle 'vim-scripts/HTML-AutoCloseTag'
-
 " NeoBundle 'jeetsukumaran/vim-buffergator'
-
 " NeoBundle 'leafgarland/typescript-vim'
-
 " NeoBundle 'Quramy/tsuquyomi'
-
 " NeoBundle 'clausreinke/typescript-tools.vim'
-
-
 " NeoBundle 'HerringtonDarkholme/yats.vim'
-
 " NeoBundle 'xolox/vim-easytags'
-"
 " NeoBundle 'majutsushi/tagbar'
-
 " NeoBundle 'Shougo/vimshell.vim'
-
 " NeoBundle 'othree/yajs.vim'
-
 " NeoBundle 'othree/es.next.syntax.vim'
-
 " NeoBundle 'isRuslan/vim-es6'
-
 " NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 
 
-NeoBundle 'wincent/ferret'
-
-NeoBundle 'mtscout6/syntastic-local-eslint.vim'
 
 
-NeoBundle 'kshenoy/vim-signature'
+
+" NeoBundle 'kshenoy/vim-signature'
 "  mx           Toggle mark 'x' and display it in the leftmost column
 "  dmx          Remove mark 'x' where x is a-zA-Z
 "  m,           Place the next available mark
@@ -109,48 +38,234 @@ NeoBundle 'kshenoy/vim-signature'
 
 " NeoBundle 'bling/vim-bufferline'
 
-NeoBundle 'samuelsimoes/vim-jsx-utils'
 
-NeoBundle 'mtth/scratch.vim'
+
+
+
+
+
+
+" Make sure you use single quotes
+call plug#begin('~/.vim/plugged')
+
+" ==============================================================================
+" Editor
+" ==============================================================================
+Plug 'jordwalke/VimCleanColors'       " Colorschemes
+Plug 'tpope/vim-sensible'             " Bootstrap for Vim
+Plug 'jordwalke/VimAutoMakeDirectory' " Make directory if needed
+Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything else in the world
+Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
+Plug 'ntpeters/vim-better-whitespace' " Highlight whitespace
+
+" Make sure to have `set guioptions+=e` in your `.gvimrc`.
+Plug 'jordwalke/MacVimSmartGUITabs'
+
+Plug 'scrooloose/nerdtree'
+source ~/.vim/pluginRc/nerdTreeVimRc
+
+Plug 'milkypostman/vim-togglelist'
+let g:toggle_list_copen_command="bo copen 30"
+let g:toggle_list_lopen_command="bo copen 30"
+
+
+" ==============================================================================
+" Solarized
+" ==============================================================================
+Plug 'altercation/vim-colors-solarized'
+"default value is 1
+let g:solarized_underline=0
+"default value is 16
+let g:solarized_termcolors=256
+"default value is normal
+let g:solarized_contrast="high"
+"default value is normal
+let g:solarized_visibility="high"
+
+
+
+
+
+" ==============================================================================
+" Session
+" ==============================================================================
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-session'
+" let g:session_autosave_periodic = 0  "Every three minutes + on close seems fine.
+" But saving resets window dims!
+let g:session_autosave = 'yes'       "Auto-save on close
+let g:session_autoload = 'no'
+
+" Make sure to save sessions outside of your dotfiles in case you publish your
+" dotfiles to github etc.
+" The Session Directory
+let g:session_directory="~/vim_sessions"
+
+" My custom session management GUI tools (in menu bar) Based on one of the
+" other session managers.
+set runtimepath+=~/.vim/localBundle/sessions
+set runtimepath+=~/.vim/localBundle/wowcamldebug
+
+
+
+
+" ==============================================================================
+" Airline - A lighterweight Powerline
+" ==============================================================================
+Plug 'jordwalke/vim-airline'
+if has("gui_macvim") || has("gui_vimr")
+  autocmd VimEnter * set guioptions+=e
+endif
+let g:airline_powerline_fonts = 1
+
+let g:airline#extensions#branch#enabled = 0
+"let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline_section_y = ''
+
+set laststatus=2
+" Disable truncation
+let g:airline#extensions#default#section_truncate_width = {}
+
+
+
+
+
+" ==============================================================================
+" EditING
+" ==============================================================================
+Plug 'tpope/vim-repeat'                   " Dot operator for extensions
+Plug 'tpope/vim-surround'                 " Edit surround
+Plug 'tomtom/tcomment_vim'                " Commenter
+Plug 'junegunn/vim-easy-align'            " Align lines based on a character
+Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
+Plug 'vim-scripts/Parameter-Text-Objects' " Defines Parameter as a Text Object `viP`
+Plug 'sickill/vim-pasta'                  " Paste with indentation
+Plug 'tpope/vim-commentary'               " Commenting with motion commands
+Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
+Plug 'MartinLafreniere/vim-PairTools'     " Auto-close pair, like ()
+source ~/.vim/pluginRc/pairToolsVimRc
+
+Plug 'mtth/scratch.vim'
 " :Scratch
 " gs - open scratch window in insert mode. Pastes what is already selected.
 
-" This plugin allows you to select some text using Vim's visual mode, then hit * and # to search for it elsewhere in the file.
-NeoBundle 'bronson/vim-visual-star-search'
-
-NeoBundle 'mbbill/undotree'
+Plug 'mbbill/undotree'
 " <Space>u - open undoTree
 
-NeoBundle 'bkad/CamelCaseMotion'
-" call camelcasemotion#CreateMotionMappings('<leader>')
-" map <silent> q <Plug>CamelCaseMotion_w
-" map <silent> Q <Plug>CamelCaseMotion_b
-" sunmap q
-" sunmap Q
-" map <silent> e <Plug>CamelCaseMotion_e
-" map <silent> ge <Plug>CamelCaseMotion_ge
-" sunmap e
-" sunmap ge
+
+" ==============================================================================
+" Git
+" ==============================================================================
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
+"Neither of these two commands seem to do what I want
+let g:Gitv_OpenHorizontal = 1
+let g:Gitv_WipeAllOnClose = 1
+let g:Gitv_DoNotMapCtrlKey = 1
 
 
 
-call plug#begin('~/.vim/plugged')
 
-" Make sure you use single quotes
+" ==============================================================================
+" Window Management
+" ==============================================================================
+Plug 'jordwalke/VimSplitBalancer'
 
 
+
+" ==============================================================================
+" Movement
+" ==============================================================================
+Plug 'bkad/CamelCaseMotion'
+Plug 'easymotion/vim-easymotion'
+Plug 'terryma/vim-expand-region'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'vim-scripts/matchit.zip' " enhances % command to jump to corresponding html tags
+
+
+
+
+" ==============================================================================
+" Searching
+" ==============================================================================
+Plug 'gabesoft/vim-ags'
+Plug 'rking/ag.vim'
+Plug 'wincent/ferret' " Search and Replace in project
+
+" This plugin allows you to select some text using Vim's visual mode, then hit * and # to search for it elsewhere in the file.
+Plug 'bronson/vim-visual-star-search'
+
+
+
+" ==============================================================================
+" Javascript & React
+" ==============================================================================
 Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
-
-" Plug 'dracula/vim'
-
-Plug 'embear/vim-localvimrc'
-let g:localvimrc_ask = 0
 
 Plug 'othree/javascript-libraries-syntax.vim'
 let g:used_javascript_libs = 'underscore,react'
 
+Plug 'samuelsimoes/vim-jsx-utils'
+Plug 'vim-scripts/HTML-AutoCloseTag'
+Plug 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
 
-" YouCompleteMe with Ultisnip tab support
+
+
+
+" ==============================================================================
+" Other syntaxes
+" ==============================================================================
+Plug 'tpope/vim-markdown'
+Plug 'elzr/vim-json'
+au BufRead,BufNewFile *.json set filetype=json
+let g:syntastic_json_checkers=['jsonlint']
+
+
+
+
+
+" ==============================================================================
+" Project Config
+" ==============================================================================
+Plug 'tpope/vim-projectionist'
+Plug 'embear/vim-localvimrc'
+let g:localvimrc_ask = 0
+
+
+
+
+
+" ==============================================================================
+" CtrlP
+" ==============================================================================
+Plug 'ctrlpvim/ctrlp.vim'
+source ~/.vim/pluginRc/ctrlPVimRc
+Plug 'tacahiroy/ctrlp-funky'
+Plug 'ivalkeen/vim-ctrlp-tjump'
+Plug 'sgur/ctrlp-extensions.vim'
+
+" https://robots.thoughtbot.com/faster-grepping-in-vim
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+ let g:ctrlp_use_caching = 0
+endif
+
+
+
+
+" ==============================================================================
+" YouCompleteMe & UltiSnips
+" ==============================================================================
 " from http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
@@ -172,6 +287,28 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+
+
+" ==============================================================================
+" Syntastic
+" ==============================================================================
+Plug 'scrooloose/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
+let g:syntastic_enable_signs=1
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_loc_list_height=15
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+"
+" https://github.com/scrooloose/syntastic/issues/1649
+"let g:syntastic_syntastic_javascript_flow_exe = 'flow check'
+
+" let g:syntastic_javascript_checkers = ['flow', 'eslint']
+
+
+
 
 " Add plugins to &runtimepath
 call plug#end()

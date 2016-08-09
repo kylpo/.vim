@@ -38,7 +38,7 @@ filetype plugin on " Required for NeoBundle and also good.
 filetype indent on " Required for NeoBundle and also good.
 if has('vim_starting')
   set nocompatible               " Be iMproved
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
+  " set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 
@@ -148,11 +148,11 @@ au BufNewFile,BufRead *.cpp set filetype=objcpp
 au BufNewFile,BufRead *.h set filetype=objcpp
 au BufNewFile,BufRead *.m set filetype=objcpp
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+" call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
-NeoBundleFetch 'Shougo/neobundle.vim'
+" NeoBundleFetch 'Shougo/neobundle.vim'
 
 " iTerm requires the following commented code to be placed in your .bashrc in
 " order for Vim to show full 256 colors.
@@ -177,7 +177,7 @@ if filereadable(expand("~/.vim/bundlesVimRc.custom"))
 endif
 " This is to prevent NeoBundle from having the user "Hit Enter To Continue"
 set cmdheight=20
-NeoBundleCheck
+" NeoBundleCheck
 autocmd VimEnter * exec ":set cmdheight=1"
 
 source ~/.vim/guiSettingsVimRc   " Must come after .bundlesVimRc

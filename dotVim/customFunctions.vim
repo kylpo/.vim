@@ -91,6 +91,44 @@ command! -complete=file -nargs=+ Find call s:RunShellCommandInTab('find . -irege
 "   silent! r! ls
 " endfunction
 
+
+function! SplitLineNicely()
+    " Save previous value of last search register
+    let saved_last_search_pattern = @/
+
+    " :substitute replaces the content of the register with the `\s\+` 
+    " pattern highlighting all whitespaces in the file
+    substitute /\s\+/\r/g
+
+    " Restore previous search register
+    let @/ = saved_last_search_pattern
+endfunction
+
+
+
+function! ToggleNumbersOn()
+    set nu!
+    set rnu
+endfunction
+function! ToggleRelativeOn()
+    set rnu!
+    set nu
+endfunction
+
+
+function! Preserve(command)
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  execute a:command
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+
 "========== Windows ===================================
 if has("gui_win32")
   source ~/.vim/.windowsCustomFunctions.vim
