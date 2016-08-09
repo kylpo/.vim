@@ -19,6 +19,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " like vim-vinegar
 let g:NERDTreeMapUpdir = '-'
 
+" move up, but keep current dir expanded
+let g:NERDTreeMapUpdirKeepOpen = 'u'
+
 " Ignore turds left behind by Mercurial.
 let g:NERDTreeIgnore=['\.orig']
 
