@@ -3,6 +3,13 @@
 " This is broken in newer builds of NerdTree:
 " let g:NERDTreeMapOpenInTab='<ENTER>'
 
+
+" call NERDTreeAddKeyMap({
+"        \ 'key': '-',
+"        \ 'scope': 'all',
+"        \ 'callback': 'g:NERDTreeMapUpdir',
+"        \ 'quickhelpText': 'Move the tree root up a dir (like doing a "cd ..").' })
+
 let g:NERDTreeCustomReuseWindows = '1'
 call NERDTreeAddKeyMap({
        \ 'key': 'w',

@@ -16,6 +16,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 " " Not so much color
 " let g:NERDChristmasTree = 0
 
+" like vim-vinegar
+let g:NERDTreeMapUpdir = '-'
+
 " Ignore turds left behind by Mercurial.
 let g:NERDTreeIgnore=['\.orig']
 
