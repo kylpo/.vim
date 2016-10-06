@@ -10,8 +10,7 @@ set colorcolumn=121
 set relativenumber
 
 "
-" set background=light
-" colorscheme solarizedLight
+" Theme
 
 " let g:flow#enable = 0
 " let g:flow#autoclose = 1

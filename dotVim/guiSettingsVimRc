@@ -54,6 +54,10 @@ if has("gui_running") " all this for gui use
 endif
 
 syntax enable
+set t_Co=256
 set background=dark
 colorscheme spacegray
 " colorscheme dracula
+
+" set background=light
+" colorscheme solarizedLight

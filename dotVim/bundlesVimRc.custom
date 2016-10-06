@@ -70,17 +70,44 @@ let g:toggle_list_lopen_command="bo copen 30"
 
 
 " ==============================================================================
-" Solarized
+" Themes
 " ==============================================================================
 Plug 'altercation/vim-colors-solarized'
 "default value is 1
-let g:solarized_underline=0
+" let g:solarized_underline=0
 "default value is 16
-let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 "default value is normal
-let g:solarized_contrast="high"
+" let g:solarized_contrast="high"
 "default value is normal
-let g:solarized_visibility="high"
+" let g:solarized_visibility="high"
+
+" Plug 'chriskempson/base16-vim'
+Plug 'mhartington/oceanic-next'
+" syntax enable
+" set t_Co=256
+" colorscheme OceanicNext
+" set background=dark
+"
+" let g:airline_theme='oceanicnext'
+" " enable italics, disabled by default
+" let g:oceanic_next_terminal_italic = 1
+"
+" " enable bold, disabled by default
+" let g:oceanic_next_terminal_bold = 1
+
+" Plug 'bcicen/vim-vice'
+" colorscheme vice
+
+" Plug 'jnurmine/Zenburn'
+
+" Plug 'w0ng/vim-hybrid'
+" let g:hybrid_custom_term_colors = 1
+" let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
+
+" Plug 'quanganhdo/grb256'
+
+Plug 'daylerees/colour-schemes', { 'rtp': 'vim' }
 
 
 
@@ -141,7 +168,8 @@ Plug 'junegunn/vim-easy-align'            " Align lines based on a character
 Plug 'vim-scripts/YankRing.vim'           " Like Emacs' yankring
 Plug 'vim-scripts/Parameter-Text-Objects' " Defines Parameter as a Text Object `viP`
 Plug 'sickill/vim-pasta'                  " Paste with indentation
-Plug 'tpope/vim-commentary'               " Commenting with motion commands
+" Plug 'tpope/vim-commentary'               " Commenting with motion commands
+Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
 Plug 'MartinLafreniere/vim-PairTools'     " Auto-close pair, like ()
 source ~/.vim/pluginRc/pairToolsVimRc
@@ -183,6 +211,20 @@ Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'vim-scripts/matchit.zip' " enhances % command to jump to corresponding html tags
+Plug 'haya14busa/incsearch.vim'
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+" :h g:incsearch#auto_nohlsearch
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
 
 
 
@@ -204,8 +246,8 @@ Plug 'bronson/vim-visual-star-search'
 " ==============================================================================
 Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
 
-Plug 'othree/javascript-libraries-syntax.vim'
-let g:used_javascript_libs = 'underscore,react'
+" Plug 'othree/javascript-libraries-syntax.vim'
+" let g:used_javascript_libs = 'underscore,react'
 
 Plug 'samuelsimoes/vim-jsx-utils'
 Plug 'vim-scripts/HTML-AutoCloseTag'
@@ -222,6 +264,7 @@ Plug 'tpope/vim-markdown'
 Plug 'elzr/vim-json'
 au BufRead,BufNewFile *.json set filetype=json
 let g:syntastic_json_checkers=['jsonlint']
+
 
 
 
@@ -300,12 +343,12 @@ let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_loc_list_height=15
 let g:syntastic_javascript_checkers=['eslint']
+" let g:syntastic_javascript_checkers = ['flow', 'eslint']
 let g:syntastic_javascript_eslint_exec = 'eslint_d'
 "
 " https://github.com/scrooloose/syntastic/issues/1649
 "let g:syntastic_syntastic_javascript_flow_exe = 'flow check'
 
-" let g:syntastic_javascript_checkers = ['flow', 'eslint']
 
 
 
