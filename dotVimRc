@@ -1,3 +1,4 @@
+source ~/.vim/vimrc.plugs
 
 filetype plugin on " Required for NeoBundle and also good.
 filetype indent on " Required for NeoBundle and also good.
@@ -12,10 +13,6 @@ if has('gui_win32')
 endif
 
 
-
-if filereadable(expand("~/.vim/vimrc.custom.before"))
-  source ~/.vim/vimrc.custom.before
-endif
 
 set noswapfile     " Don't make backups.
 set nowritebackup " Even if you did make a backup, don't keep it around.
@@ -134,9 +131,19 @@ au BufNewFile,BufRead *.m set filetype=objcpp
 " (You probably also need the base16 colorscheme shell script to exist
 " somewhere in your path) - See the base16 docs.
 " let base16colorspace="256"
-set t_Co=256
 
-source ~/.vim/bundlesVimRc.custom
+syntax enable
+set t_Co=256
+set background=dark
+colorscheme spacegray
+
+set regexpengine=1
+set winwidth=1
+set hidden
+set cursorline
+set colorcolumn=121
+set relativenumber
+
 
 " This is to prevent NeoBundle from having the user "Hit Enter To Continue"
 set cmdheight=20
@@ -149,9 +156,6 @@ source ~/.vim/customFunctions.vim
 
 " sensible.vim disturbs this - reset it.
 set listchars = "eol:$"
-if filereadable(expand("~/.vim/vimrc.custom.after"))
-  source ~/.vim/vimrc.custom.after
-endif
 
 if exists('+colorcolumn')
   " Highlight up to 255 columns (this is the current Vim max) beyond 'textwidth'

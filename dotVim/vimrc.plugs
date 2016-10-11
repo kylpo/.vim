@@ -1,50 +1,3 @@
-
-
-" NeoBundle 'sjbach/lusty'
-
-
-
-
-
-
-
-
-"NeoBundle 'Olical/vim-enmasse'
-" NeoBundle 'tpope/vim-vinegar'
-" NeoBundle 'nathanaelkane/vim-indent-guides'
-" NeoBundle 'jeetsukumaran/vim-buffergator'
-" NeoBundle 'leafgarland/typescript-vim'
-" NeoBundle 'Quramy/tsuquyomi'
-" NeoBundle 'clausreinke/typescript-tools.vim'
-" NeoBundle 'HerringtonDarkholme/yats.vim'
-" NeoBundle 'xolox/vim-easytags'
-" NeoBundle 'majutsushi/tagbar'
-" NeoBundle 'Shougo/vimshell.vim'
-" NeoBundle 'othree/yajs.vim'
-" NeoBundle 'othree/es.next.syntax.vim'
-" NeoBundle 'isRuslan/vim-es6'
-" NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-
-
-
-
-
-" NeoBundle 'kshenoy/vim-signature'
-"  mx           Toggle mark 'x' and display it in the leftmost column
-"  dmx          Remove mark 'x' where x is a-zA-Z
-"  m,           Place the next available mark
-"  m-           Delete all marks from the current line
-"  m<Space>     Delete all marks from the current buffer
-
-" NeoBundle 'bling/vim-bufferline'
-
-
-
-
-
-
-
-
 " Make sure you use single quotes
 call plug#begin('~/.vim/plugged')
 
@@ -52,38 +5,71 @@ call plug#begin('~/.vim/plugged')
 " Editor
 " ==============================================================================
 Plug 'jordwalke/VimCleanColors'       " Colorschemes
-Plug 'tpope/vim-sensible'             " Bootstrap for Vim
+Plug 'tpope/vim-sensible'             " Sensible defaults
 Plug 'jordwalke/VimAutoMakeDirectory' " Make directory if needed
 Plug 'jordwalke/VimCloser'            " Go to Left when closing like everything else in the world
 Plug 'AndrewRadev/undoquit.vim'       " Re-open a quit window (like browser tabs)
-Plug 'ntpeters/vim-better-whitespace' " Highlight whitespace
+
+" Highlight whitespace
+Plug 'ntpeters/vim-better-whitespace'
+
+" Add :Bdelete command to close buffer without changing layout.
+Plug 'moll/vim-bbye'
+
+" Single command for grabbing then swapping windows.
+Plug 'wesQ3/vim-windowswap'
 
 " Make sure to have `set guioptions+=e` in your `.gvimrc`.
 Plug 'jordwalke/MacVimSmartGUITabs'
-
-Plug 'scrooloose/nerdtree'
-source ~/.vim/pluginRc/nerdTreeVimRc
 
 Plug 'milkypostman/vim-togglelist'
 let g:toggle_list_copen_command="bo copen 30"
 let g:toggle_list_lopen_command="bo copen 30"
 
+Plug 'scrooloose/nerdtree'
+"  Close vim if the only window left
+" open is a NERDTree?
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" like vim-vinegar
+let g:NERDTreeMapUpdir = '-'
+
+" move up, but keep current dir expanded
+let g:NERDTreeMapUpdirKeepOpen = 'u'
+
+" Ignore turds left behind by Mercurial.
+let g:NERDTreeIgnore=['\.orig']
+
+" The default of 31 is just a little too narrow.
+let g:NERDTreeWinSize=40
+
+" Disable display of '?' text and 'Bookmarks' label.
+let g:NERDTreeMinimalUI=1
+
+" Let <Leader><Leader> (^#) return from NERDTree window.
+let g:NERDTreeCreatePrefix='silent keepalt keepjumps'
+
+" show hidden files by default
+let g:NERDTreeShowHidden=1
+
+" Single-click to toggle directory nodes, double-click to open non-directory
+" nodes.
+let g:NERDTreeMouseMode=2
+
+if has('autocmd')
+  augroup WincentNERDTree
+    autocmd!
+    autocmd User NERDTreeInit call autocmds#attempt_select_last_file()
+  augroup END
+endif
 
 " ==============================================================================
 " Themes
 " ==============================================================================
 Plug 'altercation/vim-colors-solarized'
-"default value is 1
-" let g:solarized_underline=0
-"default value is 16
-" let g:solarized_termcolors=256
-"default value is normal
-" let g:solarized_contrast="high"
-"default value is normal
-" let g:solarized_visibility="high"
 
 " Plug 'chriskempson/base16-vim'
-Plug 'mhartington/oceanic-next'
+" Plug 'mhartington/oceanic-next'
 " syntax enable
 " set t_Co=256
 " colorscheme OceanicNext
@@ -107,7 +93,7 @@ Plug 'mhartington/oceanic-next'
 
 " Plug 'quanganhdo/grb256'
 
-Plug 'daylerees/colour-schemes', { 'rtp': 'vim' }
+" Plug 'daylerees/colour-schemes', { 'rtp': 'vim' }
 
 
 
@@ -116,6 +102,10 @@ Plug 'daylerees/colour-schemes', { 'rtp': 'vim' }
 " ==============================================================================
 " Session
 " ==============================================================================
+
+" Start screen and improved session management.
+"Plug 'mhinz/vim-startify'
+
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-session'
 " let g:session_autosave_periodic = 0  "Every three minutes + on close seems fine.
@@ -131,7 +121,7 @@ let g:session_directory="~/vim_sessions"
 " My custom session management GUI tools (in menu bar) Based on one of the
 " other session managers.
 set runtimepath+=~/.vim/localBundle/sessions
-set runtimepath+=~/.vim/localBundle/wowcamldebug
+" set runtimepath+=~/.vim/localBundle/wowcamldebug
 
 
 
@@ -159,7 +149,7 @@ let g:airline#extensions#default#section_truncate_width = {}
 
 
 " ==============================================================================
-" EditING
+" Editing
 " ==============================================================================
 Plug 'tpope/vim-repeat'                   " Dot operator for extensions
 Plug 'tpope/vim-surround'                 " Edit surround
@@ -172,7 +162,12 @@ Plug 'sickill/vim-pasta'                  " Paste with indentation
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-abolish'                  " Auto-correct spelling of some words
 Plug 'MartinLafreniere/vim-PairTools'     " Auto-close pair, like ()
-source ~/.vim/pluginRc/pairToolsVimRc
+autocmd FileType javascript let g:pairtools_javascript_tagwrenchhook = 'tagwrench#BuiltinHTML5Hook'
+autocmd FileType javascript let g:pairtools_javascript_twexpander = 1
+autocmd FileType javascript let g:pairtools_javascript_tweraser   = 1
+autocmd FileType javascript let g:pairtools_javascript_tagwrench = 1
+autocmd FileType javascript let g:pairtools_javascript_apostrophe = 0
+autocmd FileType javascript let g:pairtools_javascript_jigsaw    = 1
 
 Plug 'mtth/scratch.vim'
 " :Scratch
@@ -185,8 +180,13 @@ Plug 'mbbill/undotree'
 " ==============================================================================
 " Git
 " ==============================================================================
+
+" Show git changes in gutter.
 Plug 'airblade/vim-gitgutter'
+
+" Git command helpers (:G*)
 Plug 'tpope/vim-fugitive'
+
 Plug 'gregsexton/gitv'
 "Neither of these two commands seem to do what I want
 let g:Gitv_OpenHorizontal = 1
@@ -207,10 +207,27 @@ Plug 'jordwalke/VimSplitBalancer'
 " Movement
 " ==============================================================================
 Plug 'bkad/CamelCaseMotion'
+
+" For custom text objects, needed for all vim-textobj plugins.
+Plug 'kana/vim-textobj-user'
+
+" Variable (CamelCase or underscore) segment text object (iv / av).
+Plug 'Julian/vim-textobj-variable-segment'
+
+" Comment text object (ic / ac / aC)
+"Plug 'glts/vim-textobj-comment'
+
+" Entire buffer text object (ie / ae).
+"Plug 'kana/vim-textobj-entire'
+
+" HTML/XML attribute text object (ix / ax).
+Plug 'whatyouhide/vim-textobj-xmlattr'
+
 Plug 'easymotion/vim-easymotion'
 Plug 'terryma/vim-expand-region'
 Plug 'terryma/vim-smooth-scroll'
-Plug 'vim-scripts/matchit.zip' " enhances % command to jump to corresponding html tags
+Plug 'vim-scripts/matchit.zip'            " enhances % command to jump to corresponding html tags
+Plug 'tpope/vim-rsi'                      " Readline key bindings for Vim (C-a, C-e etc.).
 Plug 'haya14busa/incsearch.vim'
 map /  <Plug>(incsearch-forward)
 map ?  <Plug>(incsearch-backward)
@@ -250,7 +267,14 @@ Plug 'pangloss/vim-javascript', { 'branch': 'develop' }
 " let g:used_javascript_libs = 'underscore,react'
 
 Plug 'samuelsimoes/vim-jsx-utils'
+
 Plug 'vim-scripts/HTML-AutoCloseTag'
+
+" Highlight matching tag
+"Plug 'Valloric/MatchTagAlways'
+
+"Plug 'vim-scripts/closetag.vim'
+"Plug 'alvan/vim-closetag'
 Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
 
@@ -285,10 +309,38 @@ let g:localvimrc_ask = 0
 " CtrlP
 " ==============================================================================
 Plug 'ctrlpvim/ctrlp.vim'
-source ~/.vim/pluginRc/ctrlPVimRc
-Plug 'tacahiroy/ctrlp-funky'
-Plug 'ivalkeen/vim-ctrlp-tjump'
-Plug 'sgur/ctrlp-extensions.vim'
+" set splitright
+""jump to existing buffer on ANY open command (split/tab/etc).
+" let g:ctrlp_switch_buffer="ETVH"
+"" search anything (in files, buffers and MRU files at the same time.)
+" let g:ctrlp_cmd = 'CtrlPMixed'
+"
+" Open ctrlp with cmd+p
+let g:ctrlp_map = '<D-p>'
+"search for nearest ancestor like .git, .hg, else the directory of the current file
+let g:ctrlp_working_path_mode = 'a'
+" show the match window at the top of the screen
+let g:ctrlp_match_window_bottom = 1
+" maxiumum height of match window
+" See other match window setting
+" let g:ctrlp_max_height = 10
+let g:ctrlp_match_window = 'bottom,order:btt,min:13,max:13'
+" enable caching
+let g:ctrlp_use_caching = 1
+
+"" speed up by not removing clearing cache evertime
+" let g:ctrlp_clear_cache_on_exit=0
+
+" show me dotfiles
+let g:ctrlp_show_hidden = 1
+" number of recently opened files
+let g:ctrlp_mruf_max = 250
+let g:ctrlp_max_depth = 7
+let g:ctrlp_max_files = 30000
+
+Plug 'tacahiroy/ctrlp-funky'          " :CtrlPFunky function navigator for ctrlp.vim
+"Plug 'ivalkeen/vim-ctrlp-tjump'      " tag navigator for ctrlp.vim
+Plug 'sgur/ctrlp-extensions.vim'      " :CtrlPCmdline, :CtrlPYankring, :CtrlPMenu
 
 " https://robots.thoughtbot.com/faster-grepping-in-vim
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -311,7 +363,9 @@ endif
 " ==============================================================================
 " from http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe'
+
+" Autocompletion.
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 Plug 'SirVer/ultisnips'
 if has('gui_win32')
   let g:UltiSnipsSnippetsDir=$HOME
@@ -348,10 +402,6 @@ let g:syntastic_javascript_eslint_exec = 'eslint_d'
 "
 " https://github.com/scrooloose/syntastic/issues/1649
 "let g:syntastic_syntastic_javascript_flow_exe = 'flow check'
-
-
-
-
 
 " Add plugins to &runtimepath
 call plug#end()

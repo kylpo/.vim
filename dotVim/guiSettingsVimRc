@@ -53,10 +53,10 @@ if has("gui_running") " all this for gui use
   endif
 endif
 
-syntax enable
-set t_Co=256
-set background=dark
-colorscheme spacegray
+" syntax enable
+" set t_Co=256
+" set background=dark
+" colorscheme spacegray
 " colorscheme dracula
 
 " set background=light
