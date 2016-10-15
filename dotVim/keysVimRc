@@ -10,7 +10,7 @@ nmap K <nop>
 nmap Q q
 
 " Huge saver! Why do you need to press shift when executing a command?
-nnoremap ; :
+" nnoremap ; :
 
 " clear search highlights on esc
 nnoremap <silent> <esc>  :nohlsearch<return><esc>
@@ -100,8 +100,8 @@ sunmap e
 sunmap ge
 
 " EasyMotion
-nmap s <Plug>(easymotion-s)
-nmap S <Plug>(easymotion-bd-w)
+" nmap s <Plug>(easymotion-s)
+" nmap S <Plug>(easymotion-bd-w)
 
 " MacVimSmartGUITabs
 map <D-Cr> :SmartGUITabsToggleFullScreen<CR>
@@ -136,8 +136,8 @@ vmap <D-[> <gv
 
 
 " EasyMotion
-vmap s <Plug>(easymotion-s)
-vmap S <Plug>(easymotion-bd-w)
+" vmap s <Plug>(easymotion-s)
+" vmap S <Plug>(easymotion-bd-w)
 
 
 " EasyAlign
@@ -243,8 +243,10 @@ nnoremap <Leader>p :echo expand('%')<CR>
 " (mnemonic: coloring).
 nnoremap <silent> <Leader>c :syntax sync fromstart<CR>
 
+nmap <Leader>s <Plug>(Scalpel)
+
 " <LocalLeader>e -- Edit file, starting in same directory as current file.
-nnoremap <Leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
+" nnoremap <Leader>e :edit <C-R>=expand('%:p:h') . '/'<CR>
 
 " Git
 nnoremap <Leader>gs :Gstatus<CR>
