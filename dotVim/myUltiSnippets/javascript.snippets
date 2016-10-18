@@ -60,8 +60,8 @@ if ( ${VISUAL:expr} ) {
 }
 endsnippet
 
-snippet ret "return ;" !
-return $0;
+snippet ret "return " !
+return $0
 endsnippet
 
 snippet if "if" !
@@ -130,9 +130,9 @@ alert('total time:' + (end - start));
 endsnippet
 
 snippet profile "this.setState." !
-console.profile('$0');
+console.profile('$0')
 ${VISUAL}$0
-console.profileEnd();
+console.profileEnd()
 endsnippet
 
 
@@ -324,7 +324,7 @@ endsnippet
 snippet o; "obj;" !
 {
 	${1:key}: ${0:val}
-};
+}
 endsnippet
 
 snippet o, "obj," !
@@ -368,30 +368,30 @@ JSON.parse($0)
 endsnippet
 
 snippet log "log"
-console.log($0);
+console.log($0)
 endsnippet
 
 snippet logs "logs"
-console.log('$0');
+console.log('$0')
 endsnippet
 
 snippet logsif "if (x) log"
 if (${1:cond}) {
-	console.log('$0');
+	console.log('$0')
 }
 endsnippet
 
 snippet logo "logobject"
-console.log("$1:" + JSON.stringify($1));
+console.log("$1:" + JSON.stringify($1))
 endsnippet
 
 snippet db "debugger" !
 debugger
 endsnippet
 
-snippet dbif "if(x) debugger;" !
+snippet dbif "if(x) debugger" !
 if (${1:cond}) {
-	debugger;
+	debugger
 }
 endsnippet
 
@@ -423,7 +423,7 @@ snippet ren
 render() {
 	return (
 		${1:<div />}
-	);
+	)
 }
 endsnippet
 
@@ -484,7 +484,7 @@ componentDidMount() {
 endsnippet
 
 snippet import "import" !
-import ${1:ModuleName} from '$1';$0
+import ${1:ModuleName} from '$1'$0
 endsnippet
 
 snippet package "package.json template" !
